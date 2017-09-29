@@ -76,23 +76,23 @@ namespace WindowsFormsApplication1
                 };
 
                 this.chart.Series.Add(series);
-                chart.Scale(0.5);
+               // chart.Scale(0.5);
                 if (current.a1 == 0)
                 {
                     double x2 = current.b / current.a2;
-                    series.Points.AddXY(-100, x2);
-                    series.Points.AddXY(100, x2);
+                    series.Points.AddXY(-10, x2);
+                    series.Points.AddXY(10, x2);
                 } else if (current.a2 == 0)
                 {
                     double x1 = current.b / current.a1;
-                    series.Points.AddXY(x1, -100);
-                    series.Points.AddXY(x1, 100);
+                    series.Points.AddXY(x1, -10);
+                    series.Points.AddXY(x1, 10);
                 } else
                 {
-                    double x1 = (current.b - current.a2 * 100) / current.a1;
-                    double x2 = (current.b - current.a1 * 100) / current.a2;
-                    series.Points.AddXY(x1, 100);
-                    series.Points.AddXY(100, x2);
+                    double x1 = (current.b - current.a2 * 10) / current.a1;
+                    double x2 = (current.b - current.a2 * -10) / current.a1;
+                    series.Points.AddXY(x1, 10);
+                    series.Points.AddXY(x2, -10);
                 }
             }
             chart.Invalidate();
