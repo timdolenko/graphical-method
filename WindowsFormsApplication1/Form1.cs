@@ -98,6 +98,127 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public struct Point
+        {
+            public double x1;
+            public double x2;
+            public Point(double x1, double x2)
+            {
+                this.x1 = x1;
+                this.x2 = x2;
+            }
+        }
+
+        List<Point> getCommons()
+        {
+            List<Point> commons = new List<Point>();
+            for (int j = 0; j < constraints.Count; j++)
+            {
+
+                for (int i = 0; i < constraints.Count; i++)
+                {
+                    if (i != j)
+                    {
+                        Constraint cons1 = constraints[i];
+                        Constraint cons2 = constraints[j];
+
+                        if ((cons1.a2 != 0 || cons2.a2 != 0) && cons1.a1 != 0 && cons2.a1 != 0)
+                        {
+                            Constraint c1 = new Constraint(cons1.a1 / cons1.a1, cons1.a2 / cons1.a1, cons1.b / cons1.a1, cons1.isGreater);
+                            Constraint c2 = new Constraint(cons2.a1 / cons2.a1, cons2.a2 / cons2.a1, cons2.b / cons2.a1, cons2.isGreater);
+
+                            double x2 = (c1.b - c2.b) / (c1.a2 - c2.a2);
+                            double x1 = c1.b - c1.a2 * x2;
+                            Point common = new Point(x1, x2);
+                            if (!commons.Contains(common))
+                            {
+                                commons.Add(common);
+                            }
+                        }
+                        else if (cons2.a1 == 0)
+                        {
+                            Constraint c1 = new Constraint(cons1.a1 / cons1.a1, cons1.a2 / cons1.a1, cons1.b / cons1.a1, cons1.isGreater);
+
+                            double x2 = (c1.b - cons2.b) / (c1.a2 - cons2.a2);
+                            double x1 = c1.b - c1.a2 * x2;
+                            Point common = new Point(x1, x2);
+                            if (!commons.Contains(common))
+                            {
+                                commons.Add(common);
+                            }
+                        }
+                        else if (cons1.a1 == 0)
+                        {
+                            Constraint c2 = new Constraint(cons2.a1 / cons2.a1, cons2.a2 / cons2.a1, cons2.b / cons2.a1, cons2.isGreater);
+
+                            double x2 = (c2.b - cons1.b) / (c2.a2 - cons1.a2);
+                            double x1 = c2.b - c2.a2 * x2;
+                            Point common = new Point(x1, x2);
+                            if (!commons.Contains(common))
+                            {
+                                commons.Add(common);
+                            }
+                        }
+                    }
+                }
+            }
+            
+
+            return commons;
+        }
+
+        void adjustAxis()
+        {
+            List <Point> commons = getCommons();
+            Console.WriteLine(commons.Count);
+            if (commons.Count > 0)
+            {
+                double maxX1 = commons[0].x1;
+                foreach (Point common in commons)
+                {
+                    if (common.x1 > maxX1)
+                    {
+                        maxX1 = common.x1;
+                    }
+                }
+                double maxX2 = commons[0].x2;
+                foreach (Point common in commons)
+                {
+                    if (common.x2 > maxX2)
+                    {
+                        maxX2 = common.x2;
+                    }
+                }
+
+                double minX1 = commons[0].x1;
+                foreach (Point common in commons)
+                {
+                    if (common.x1 < minX1)
+                    {
+                        minX1 = common.x1;
+                    }
+                }
+                double minX2 = commons[0].x2;
+                foreach (Point common in commons)
+                {
+                    if (common.x2 < minX2)
+                    {
+                        minX2 = common.x2;
+                    }
+                }
+
+                double widthX1 = maxX1 - minX1;
+                double heightX2 = maxX2 - minX2;
+
+                currentXMax = maxX1 + widthX1;
+                currentXMin = minX1 - widthX1;
+                currentYMax = maxX2 + heightX2;
+                currentYMin = minX2 - heightX2;
+
+                setScale();
+            }
+        }
+
         public List<Constraint> constraints = new List<Constraint>();
 
         void test()
@@ -130,18 +251,20 @@ namespace WindowsFormsApplication1
             bTextBox.Text = "";
             signTextBox.Text = "";
         }
-
+        public double Interval { get; set; }
         void buildFunction(Function function)
         {
+         //   public double Interval { get; set; }
 
-            chart.Series.Clear();
-
+        chart.Series.Clear();
+            chart.ChartAreas[0].AxisX.Interval = 2;
+            chart.ChartAreas[0].AxisY.Interval = 2;
             chart.ChartAreas[0].AxisY.StripLines.Add(new StripLine());
             chart.ChartAreas[0].AxisY.StripLines[0].BackColor = Color.Black;
-            chart.ChartAreas[0].AxisY.StripLines[0].StripWidth = 0.5;
+            chart.ChartAreas[0].AxisY.StripLines[0].StripWidth = 0.1;
             chart.ChartAreas[0].AxisX.StripLines.Add(new StripLine());
             chart.ChartAreas[0].AxisX.StripLines[0].BackColor = Color.Black;
-            chart.ChartAreas[0].AxisX.StripLines[0].StripWidth = 0.5;
+            chart.ChartAreas[0].AxisX.StripLines[0].StripWidth = 0.1;
             //chart.ChartAreas[0].AxisY.StripLines[0].Interval = 10000;
             //chart.ChartAreas[0].AxisY.StripLines[0].IntervalOffset = 20;
             //var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
@@ -201,7 +324,7 @@ namespace WindowsFormsApplication1
                 }
             }
             chart.Invalidate();
-
+            adjustAxis();
         }
 
         private void addBtn_Click(object sender, EventArgs e)
