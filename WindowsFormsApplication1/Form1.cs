@@ -24,8 +24,69 @@ namespace WindowsFormsApplication1
             dataGridView.Columns[0].Width = 220;
             dataGridView.ScrollBars = ScrollBars.None;
             dataGridView.ClearSelection();
-            
+            setScale();
+
+            this.KeyUp += new KeyEventHandler(Form1_KeyUp);
+
             test();
+        }
+
+        void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    currentYMax += 100;
+                    currentYMin += 100;
+                    setScale();
+                    break;
+                case Keys.Down:
+                    currentYMax += -100;
+                    currentYMin += -100;
+                    setScale();
+                    break;
+                case Keys.Left:
+                    currentXMax += -100;
+                    currentXMin += -100;
+                    setScale();
+                    break;
+                case Keys.Right:
+                    currentXMax += 100;
+                    currentXMin += 100;
+                    setScale();
+                    break;
+                case Keys.Add:
+                    if ((currentXMax - currentXMin > 200) && (currentXMax - currentXMin > 200))
+                    {
+                        currentXMax += -100;
+                        currentXMin += 100;
+                        currentYMax += -100;
+                        currentYMin += 100;
+                        setScale();
+                    } else if ((currentXMax - currentXMin > 100) && (currentXMax - currentXMin > 100))
+                    {
+                        currentXMax += -50;
+                        currentXMin += 50;
+                        currentYMax += -50;
+                        currentYMin += 50;
+                        setScale();
+                    } else if ((currentXMax - currentXMin > 50) && (currentXMax - currentXMin > 50))
+                    {
+                        currentXMax += -25;
+                        currentXMin += 25;
+                        currentYMax += -25;
+                        currentYMin += 25;
+                        setScale();
+                    }
+                    break;
+                case Keys.Subtract:
+                    currentXMax += 100;
+                    currentXMin += -100;
+                    currentYMax += 100;
+                    currentYMin += -100;
+                    setScale();
+                    break;
+            }
         }
 
         public List<Constraint> constraints = new List<Constraint>();
@@ -76,7 +137,7 @@ namespace WindowsFormsApplication1
                 };
 
                 this.chart.Series.Add(series);
-                chart.Scale(0.5);
+
                 if (current.a1 == 0)
                 {
                     double x2 = current.b / current.a2;
@@ -121,6 +182,8 @@ namespace WindowsFormsApplication1
 
         private void proceedBtn_Click(object sender, EventArgs e)
         {
+
+
             try
             {
                 double c1 = Convert.ToDouble(this.c1TextBox.Text);
@@ -139,6 +202,24 @@ namespace WindowsFormsApplication1
                 c1TextBox.Text = "";
                 c2TextBox.Text = "";
             }
+        }
+
+        double currentXMax = 250;
+        double currentXMin = -50;
+        double currentYMax = 250;
+        double currentYMin = -50;
+
+        void setScale()
+        {
+            chart.ChartAreas[0].AxisX.Maximum = currentXMax;
+            chart.ChartAreas[0].AxisX.Minimum = currentXMin;
+            chart.ChartAreas[0].AxisY.Maximum = currentYMax;
+            chart.ChartAreas[0].AxisY.Minimum = currentYMin;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
