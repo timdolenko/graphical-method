@@ -31,6 +31,7 @@ namespace WindowsFormsApplication1
             test();
         }
 
+        //Функция которая ловит нажатия на клавиши (верх вниз) для масштаба и т д
         void Form1_KeyUp(object sender, KeyEventArgs e)
         {
 
@@ -97,7 +98,7 @@ namespace WindowsFormsApplication1
                     break;
             }
         }
-
+        //Структура для точки
         public struct Point
         {
             public double x1;
@@ -108,7 +109,7 @@ namespace WindowsFormsApplication1
                 this.x2 = x2;
             }
         }
-
+        //Функция которая возвращает списком точки пересечения
         List<Point> getCommons(Constraint[] constraints)
         {
             List<Point> commons = new List<Point>();
@@ -166,7 +167,7 @@ namespace WindowsFormsApplication1
 
             return commons;
         }
-
+        //Функция которая позволяет увидеть графики сразу в центре в нормальном масштабе
         void adjustAxis(Constraint[] constraints)
         {
             List <Point> commons = getCommons(constraints);
@@ -220,7 +221,7 @@ namespace WindowsFormsApplication1
         }
 
         public List<Constraint> constraints = new List<Constraint>();
-
+        //функция которая добавляет тест инфу 
         void test()
         {
             c1TextBox.Text = "2";
@@ -232,7 +233,7 @@ namespace WindowsFormsApplication1
  
 
         }
-
+        //добавить ограничение
         void add(Constraint constraint)
         {
             constraints.Add(constraint);
@@ -242,7 +243,7 @@ namespace WindowsFormsApplication1
             dataGridView.Rows.Add(constraint.ToString());
             dataGridView.ClearSelection();
         }
-
+        //очистить текст боксы для ограничений
         void clearConstraintsTextBoxes()
         {
             a1TextBox.Text = "";
@@ -251,6 +252,7 @@ namespace WindowsFormsApplication1
             signTextBox.Text = "";
         }
         public double Interval { get; set; }
+        //строит графики
         void buildFunction(Function function)
         {
 
@@ -306,8 +308,9 @@ namespace WindowsFormsApplication1
                     double x2 = (current.b - current.a2 * -3000) / current.a1;
                     series.Points.AddXY(x1, 3000);
                     series.Points.AddXY(x2, -3000);
-
+                  
                 }
+
             }
 
             List<Point> commons = getCommons(function.constraints);
@@ -333,7 +336,7 @@ namespace WindowsFormsApplication1
             chart.Invalidate();
             adjustAxis(function.constraints);
         }
-
+        //кнопка добавить ограничение
         private void addBtn_Click(object sender, EventArgs e)
         {
             try
@@ -353,7 +356,7 @@ namespace WindowsFormsApplication1
                 clearConstraintsTextBoxes();
             }
         }
-
+        // продолжить
         private void proceedBtn_Click(object sender, EventArgs e)
         {
 
@@ -384,7 +387,7 @@ namespace WindowsFormsApplication1
         double currentXMin = -50;
         double currentYMax = 250;
         double currentYMin = -50;
-
+        //Устанавливает масштаб в зависимости от переменных вверху (которые мы меняем в некоторых функциях сверху)
         void setScale()
         {
             chart.ChartAreas[0].AxisX.Maximum = currentXMax;
