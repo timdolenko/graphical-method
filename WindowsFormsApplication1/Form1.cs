@@ -109,13 +109,13 @@ namespace WindowsFormsApplication1
             }
         }
 
-        List<Point> getCommons()
+        List<Point> getCommons(Constraint[] constraints)
         {
             List<Point> commons = new List<Point>();
-            for (int j = 0; j < constraints.Count; j++)
+            for (int j = 0; j < constraints.Length; j++)
             {
 
-                for (int i = 0; i < constraints.Count; i++)
+                for (int i = 0; i < constraints.Length; i++)
                 {
                     if (i != j)
                     {
@@ -167,9 +167,9 @@ namespace WindowsFormsApplication1
             return commons;
         }
 
-        void adjustAxis()
+        void adjustAxis(Constraint[] constraints)
         {
-            List <Point> commons = getCommons();
+            List <Point> commons = getCommons(constraints);
             Console.WriteLine(commons.Count);
             if (commons.Count > 0)
             {
@@ -286,8 +286,29 @@ namespace WindowsFormsApplication1
                     series.Points.AddXY(x2, -100);
                 }
             }
+
+            List<Point> commons = getCommons(function.constraints);
+
+            var odrSeries = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "ODR",
+                //Color = System.Drawing.Color.Green,
+                IsVisibleInLegend = true,
+                //IsXValueIndexed = true,
+                ChartType = SeriesChartType.Area
+            };
+
+            this.chart.Series.Add(odrSeries);
+
+            for (int i = 0; i < commons.Count; i++)
+            {
+                Point current = commons[i];
+
+                odrSeries.Points.AddXY(current.x1, current.x2);
+            }
+
             chart.Invalidate();
-            adjustAxis();
+            adjustAxis(function.constraints);
         }
 
         private void addBtn_Click(object sender, EventArgs e)
