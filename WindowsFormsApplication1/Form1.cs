@@ -210,10 +210,10 @@ namespace WindowsFormsApplication1
                 double widthX1 = maxX1 - minX1;
                 double heightX2 = maxX2 - minX2;
 
-                currentXMax = maxX1 + widthX1;
-                currentXMin = minX1 - widthX1;
-                currentYMax = maxX2 + heightX2;
-                currentYMin = minX2 - heightX2;
+                currentXMax = Convert.ToInt32(maxX1 + widthX1);
+                currentXMin = Convert.ToInt32(minX1 - widthX1);
+                currentYMax = Convert.ToInt32(maxX2 + heightX2);
+                currentYMin = Convert.ToInt32(minX2 - heightX2);
 
                 setScale();
             }
@@ -229,8 +229,7 @@ namespace WindowsFormsApplication1
             add(new Constraint(1, 0, -1, true));
             add(new Constraint(-2, -3, 6, false));
             add(new Constraint(-1, 2, 6, false));
-            add(new Constraint(0, 1, 0, false));
-            add(new Constraint(1, 0, 0, false));
+ 
 
         }
 
@@ -254,9 +253,8 @@ namespace WindowsFormsApplication1
         public double Interval { get; set; }
         void buildFunction(Function function)
         {
-         //   public double Interval { get; set; }
 
-        chart.Series.Clear();
+            chart.Series.Clear();
             chart.ChartAreas[0].AxisX.Interval = 2;
             chart.ChartAreas[0].AxisY.Interval = 2;
             chart.ChartAreas[0].AxisY.StripLines.Add(new StripLine());
@@ -265,18 +263,6 @@ namespace WindowsFormsApplication1
             chart.ChartAreas[0].AxisX.StripLines.Add(new StripLine());
             chart.ChartAreas[0].AxisX.StripLines[0].BackColor = Color.Black;
             chart.ChartAreas[0].AxisX.StripLines[0].StripWidth = 0.1;
-            //chart.ChartAreas[0].AxisY.StripLines[0].Interval = 10000;
-            //chart.ChartAreas[0].AxisY.StripLines[0].IntervalOffset = 20;
-            //var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
-            //{
-            //    Name = "osX",
-            //    //Color = System.Drawing.Color.Green,
-            //    IsVisibleInLegend = true,
-            //    // IsXValueIndexed = true,
-            //    ChartType = SeriesChartType.Line
-            //};
-            //chart.Series["osX"].BorderWidth = 2;
-            ////chart.Invalidate();
 
             for (int i = 0; i < function.constraints.Length; i++)
             {
@@ -303,8 +289,8 @@ namespace WindowsFormsApplication1
                 if (current.a1 == 0)
                 {
                     double x2 = current.b / current.a2;
-                    series.Points.AddXY(-30, x2);
-                    series.Points.AddXY(30, x2);
+                    series.Points.AddXY(-3000, x2);
+                    series.Points.AddXY(3000, x2);
 
 
 
@@ -312,14 +298,14 @@ namespace WindowsFormsApplication1
                 else if (current.a2 == 0)
                 {
                     double x1 = current.b / current.a1;
-                    series.Points.AddXY(x1, -30);
-                    series.Points.AddXY(x1, 30);
+                    series.Points.AddXY(x1, -3000);
+                    series.Points.AddXY(x1, 3000);
                 } else
                 {
-                    double x1 = (current.b - current.a2 *30) / current.a1;
-                    double x2 = (current.b - current.a2 * -30) / current.a1;
-                    series.Points.AddXY(x1, 30);
-                    series.Points.AddXY(x2, -30);
+                    double x1 = (current.b - current.a2 *3000) / current.a1;
+                    double x2 = (current.b - current.a2 * -3000) / current.a1;
+                    series.Points.AddXY(x1, 3000);
+                    series.Points.AddXY(x2, -3000);
 
                 }
             }
@@ -329,7 +315,7 @@ namespace WindowsFormsApplication1
             var odrSeries = new System.Windows.Forms.DataVisualization.Charting.Series
             {
                 Name = "ODR",
-                //Color = System.Drawing.Color.Green,
+                Color = System.Drawing.Color.Green,
                 IsVisibleInLegend = true,
                 //IsXValueIndexed = true,
                 ChartType = SeriesChartType.Area
