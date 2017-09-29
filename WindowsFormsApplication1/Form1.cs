@@ -108,6 +108,9 @@ namespace WindowsFormsApplication1
             add(new Constraint(1, 0, -1, true));
             add(new Constraint(-2, -3, 6, false));
             add(new Constraint(-1, 2, 6, false));
+            add(new Constraint(0, 1, 0, false));
+            add(new Constraint(1, 0, 0, false));
+
         }
 
         void add(Constraint constraint)
@@ -133,6 +136,25 @@ namespace WindowsFormsApplication1
 
             chart.Series.Clear();
 
+            chart.ChartAreas[0].AxisY.StripLines.Add(new StripLine());
+            chart.ChartAreas[0].AxisY.StripLines[0].BackColor = Color.Black;
+            chart.ChartAreas[0].AxisY.StripLines[0].StripWidth = 0.5;
+            chart.ChartAreas[0].AxisX.StripLines.Add(new StripLine());
+            chart.ChartAreas[0].AxisX.StripLines[0].BackColor = Color.Black;
+            chart.ChartAreas[0].AxisX.StripLines[0].StripWidth = 0.5;
+            //chart.ChartAreas[0].AxisY.StripLines[0].Interval = 10000;
+            //chart.ChartAreas[0].AxisY.StripLines[0].IntervalOffset = 20;
+            //var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
+            //{
+            //    Name = "osX",
+            //    //Color = System.Drawing.Color.Green,
+            //    IsVisibleInLegend = true,
+            //    // IsXValueIndexed = true,
+            //    ChartType = SeriesChartType.Line
+            //};
+            //chart.Series["osX"].BorderWidth = 2;
+            ////chart.Invalidate();
+
             for (int i = 0; i < function.constraints.Length; i++)
             {
                 Constraint current = function.constraints[i];
@@ -141,28 +163,41 @@ namespace WindowsFormsApplication1
                     Name = current.ToString(),
                     //Color = System.Drawing.Color.Green,
                     IsVisibleInLegend = true,
-                    //IsXValueIndexed = true,
+                   // IsXValueIndexed = true,
                     ChartType = SeriesChartType.Line
                 };
 
+                //series.Points.AddXY(0, 100);
+                //series.Points.AddXY(0, -100);
+                //series.Points.AddXY(100, 0);
+                //series.Points.AddXY(-100, 0);
+
+
                 this.chart.Series.Add(series);
+
+
 
                 if (current.a1 == 0)
                 {
                     double x2 = current.b / current.a2;
-                    series.Points.AddXY(-100, x2);
-                    series.Points.AddXY(100, x2);
-                } else if (current.a2 == 0)
+                    series.Points.AddXY(-30, x2);
+                    series.Points.AddXY(30, x2);
+
+
+
+                }
+                else if (current.a2 == 0)
                 {
                     double x1 = current.b / current.a1;
-                    series.Points.AddXY(x1, -100);
-                    series.Points.AddXY(x1, 100);
+                    series.Points.AddXY(x1, -30);
+                    series.Points.AddXY(x1, 30);
                 } else
                 {
-                    double x1 = (current.b - current.a2 * 100) / current.a1;
-                    double x2 = (current.b - current.a2 * -100) / current.a1;
-                    series.Points.AddXY(x1, 100);
-                    series.Points.AddXY(x2, -100);
+                    double x1 = (current.b - current.a2 *30) / current.a1;
+                    double x2 = (current.b - current.a2 * -30) / current.a1;
+                    series.Points.AddXY(x1, 30);
+                    series.Points.AddXY(x2, -30);
+
                 }
             }
             chart.Invalidate();
@@ -203,6 +238,8 @@ namespace WindowsFormsApplication1
                 if (function != null)
                 {
                     buildFunction(function);
+
+
                 }
             }
             catch
