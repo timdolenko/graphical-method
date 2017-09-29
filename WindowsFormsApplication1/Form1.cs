@@ -33,57 +33,66 @@ namespace WindowsFormsApplication1
 
         void Form1_KeyUp(object sender, KeyEventArgs e)
         {
+
+            int addedValue = 50;
+            double differenceX = currentXMax - currentXMin;
+            double differenceY = currentYMax - currentYMin;
+            if ((differenceX > 100) && (differenceY > 100))
+            {
+                addedValue = 50;
+            }
+            else if ((differenceX > 50) && (differenceX > 50))
+            {
+                addedValue = 25;
+            }
+            else if ((differenceX > 25) && (differenceX > 25))
+            {
+                addedValue = 10;
+            }
+            else if ((differenceX > 10) && (differenceX > 10))
+            {
+                addedValue = 5;
+            }
+            else if ((differenceX > 5) && (differenceX > 5))
+            {
+                addedValue = 1;
+            }
+
             switch (e.KeyCode)
             {
                 case Keys.Up:
-                    currentYMax += 100;
-                    currentYMin += 100;
+                    currentYMax += addedValue;
+                    currentYMin += addedValue;
                     setScale();
                     break;
                 case Keys.Down:
-                    currentYMax += -100;
-                    currentYMin += -100;
+                    currentYMax += -addedValue;
+                    currentYMin += -addedValue;
                     setScale();
                     break;
                 case Keys.Left:
-                    currentXMax += -100;
-                    currentXMin += -100;
+                    currentXMax += -addedValue;
+                    currentXMin += -addedValue;
                     setScale();
                     break;
                 case Keys.Right:
-                    currentXMax += 100;
-                    currentXMin += 100;
+                    currentXMax += addedValue;
+                    currentXMin += addedValue;
                     setScale();
                     break;
                 case Keys.Add:
-                    if ((currentXMax - currentXMin > 200) && (currentXMax - currentXMin > 200))
-                    {
-                        currentXMax += -100;
-                        currentXMin += 100;
-                        currentYMax += -100;
-                        currentYMin += 100;
-                        setScale();
-                    } else if ((currentXMax - currentXMin > 100) && (currentXMax - currentXMin > 100))
-                    {
-                        currentXMax += -50;
-                        currentXMin += 50;
-                        currentYMax += -50;
-                        currentYMin += 50;
-                        setScale();
-                    } else if ((currentXMax - currentXMin > 50) && (currentXMax - currentXMin > 50))
-                    {
-                        currentXMax += -25;
-                        currentXMin += 25;
-                        currentYMax += -25;
-                        currentYMin += 25;
-                        setScale();
-                    }
+                    
+                    currentXMax += -addedValue;
+                    currentXMin += addedValue;
+                    currentYMax += -addedValue;
+                    currentYMin += addedValue;
+                    setScale();
                     break;
                 case Keys.Subtract:
-                    currentXMax += 100;
-                    currentXMin += -100;
-                    currentYMax += 100;
-                    currentYMin += -100;
+                    currentXMax += addedValue;
+                    currentXMin += -addedValue;
+                    currentYMax += addedValue;
+                    currentYMin += -addedValue;
                     setScale();
                     break;
             }
@@ -137,27 +146,23 @@ namespace WindowsFormsApplication1
                 };
 
                 this.chart.Series.Add(series);
-<<<<<<< HEAD
-               // chart.Scale(0.5);
-=======
 
->>>>>>> fb8dcab13ff7c69a32feb905d347391968f932ca
                 if (current.a1 == 0)
                 {
                     double x2 = current.b / current.a2;
-                    series.Points.AddXY(-10, x2);
-                    series.Points.AddXY(10, x2);
+                    series.Points.AddXY(-100, x2);
+                    series.Points.AddXY(100, x2);
                 } else if (current.a2 == 0)
                 {
                     double x1 = current.b / current.a1;
-                    series.Points.AddXY(x1, -10);
-                    series.Points.AddXY(x1, 10);
+                    series.Points.AddXY(x1, -100);
+                    series.Points.AddXY(x1, 100);
                 } else
                 {
-                    double x1 = (current.b - current.a2 * 10) / current.a1;
-                    double x2 = (current.b - current.a2 * -10) / current.a1;
-                    series.Points.AddXY(x1, 10);
-                    series.Points.AddXY(x2, -10);
+                    double x1 = (current.b - current.a2 * 100) / current.a1;
+                    double x2 = (current.b - current.a2 * -100) / current.a1;
+                    series.Points.AddXY(x1, 100);
+                    series.Points.AddXY(x2, -100);
                 }
             }
             chart.Invalidate();
