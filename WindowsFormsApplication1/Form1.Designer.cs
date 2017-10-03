@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.c1TextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,8 +53,20 @@
             this.a1TextBox = new System.Windows.Forms.TextBox();
             this.signTextBox = new System.Windows.Forms.TextBox();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.clearBtn = new System.Windows.Forms.Button();
+            this.test1Btn = new System.Windows.Forms.Button();
+            this.test2Btn = new System.Windows.Forms.Button();
+            this.test4Btn = new System.Windows.Forms.Button();
+            this.test3Btn = new System.Windows.Forms.Button();
+            this.test8Btn = new System.Windows.Forms.Button();
+            this.test7Btn = new System.Windows.Forms.Button();
+            this.test6Btn = new System.Windows.Forms.Button();
+            this.test5Btn = new System.Windows.Forms.Button();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -130,14 +143,14 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowDrop = true;
             this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.ContextMenuStrip = this.contextMenuStrip;
             this.dataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView.Location = new System.Drawing.Point(17, 71);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(199, 105);
             this.dataGridView.TabIndex = 13;
             // 
@@ -161,7 +174,7 @@
             this.proceedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.proceedBtn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.proceedBtn.ForeColor = System.Drawing.Color.White;
-            this.proceedBtn.Location = new System.Drawing.Point(17, 300);
+            this.proceedBtn.Location = new System.Drawing.Point(17, 469);
             this.proceedBtn.Name = "proceedBtn";
             this.proceedBtn.Size = new System.Drawing.Size(199, 24);
             this.proceedBtn.TabIndex = 22;
@@ -249,20 +262,156 @@
             // 
             // chart
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart.Legends.Add(legend2);
             this.chart.Location = new System.Drawing.Point(259, 12);
             this.chart.Name = "chart";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart.Series.Add(series2);
             this.chart.Size = new System.Drawing.Size(832, 511);
             this.chart.TabIndex = 31;
             this.chart.Text = "chart";
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBtn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clearBtn.ForeColor = System.Drawing.Color.White;
+            this.clearBtn.Location = new System.Drawing.Point(17, 499);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(199, 24);
+            this.clearBtn.TabIndex = 32;
+            this.clearBtn.Text = "CLEAR";
+            this.clearBtn.UseVisualStyleBackColor = false;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // test1Btn
+            // 
+            this.test1Btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.test1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.test1Btn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test1Btn.ForeColor = System.Drawing.Color.White;
+            this.test1Btn.Location = new System.Drawing.Point(17, 402);
+            this.test1Btn.Name = "test1Btn";
+            this.test1Btn.Size = new System.Drawing.Size(40, 24);
+            this.test1Btn.TabIndex = 33;
+            this.test1Btn.Text = "1";
+            this.test1Btn.UseVisualStyleBackColor = false;
+            this.test1Btn.Click += new System.EventHandler(this.test1Btn_Click);
+            // 
+            // test2Btn
+            // 
+            this.test2Btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.test2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.test2Btn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test2Btn.ForeColor = System.Drawing.Color.White;
+            this.test2Btn.Location = new System.Drawing.Point(71, 402);
+            this.test2Btn.Name = "test2Btn";
+            this.test2Btn.Size = new System.Drawing.Size(40, 24);
+            this.test2Btn.TabIndex = 34;
+            this.test2Btn.Text = "2";
+            this.test2Btn.UseVisualStyleBackColor = false;
+            this.test2Btn.Click += new System.EventHandler(this.test2Btn_Click);
+            // 
+            // test4Btn
+            // 
+            this.test4Btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.test4Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.test4Btn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test4Btn.ForeColor = System.Drawing.Color.White;
+            this.test4Btn.Location = new System.Drawing.Point(176, 402);
+            this.test4Btn.Name = "test4Btn";
+            this.test4Btn.Size = new System.Drawing.Size(40, 24);
+            this.test4Btn.TabIndex = 36;
+            this.test4Btn.Text = "4";
+            this.test4Btn.UseVisualStyleBackColor = false;
+            this.test4Btn.Click += new System.EventHandler(this.test4Btn_Click);
+            // 
+            // test3Btn
+            // 
+            this.test3Btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.test3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.test3Btn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test3Btn.ForeColor = System.Drawing.Color.White;
+            this.test3Btn.Location = new System.Drawing.Point(124, 402);
+            this.test3Btn.Name = "test3Btn";
+            this.test3Btn.Size = new System.Drawing.Size(40, 24);
+            this.test3Btn.TabIndex = 35;
+            this.test3Btn.Text = "3";
+            this.test3Btn.UseVisualStyleBackColor = false;
+            this.test3Btn.Click += new System.EventHandler(this.test3Btn_Click);
+            // 
+            // test8Btn
+            // 
+            this.test8Btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.test8Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.test8Btn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test8Btn.ForeColor = System.Drawing.Color.White;
+            this.test8Btn.Location = new System.Drawing.Point(176, 432);
+            this.test8Btn.Name = "test8Btn";
+            this.test8Btn.Size = new System.Drawing.Size(40, 24);
+            this.test8Btn.TabIndex = 40;
+            this.test8Btn.Text = "8";
+            this.test8Btn.UseVisualStyleBackColor = false;
+            // 
+            // test7Btn
+            // 
+            this.test7Btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.test7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.test7Btn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test7Btn.ForeColor = System.Drawing.Color.White;
+            this.test7Btn.Location = new System.Drawing.Point(124, 432);
+            this.test7Btn.Name = "test7Btn";
+            this.test7Btn.Size = new System.Drawing.Size(40, 24);
+            this.test7Btn.TabIndex = 39;
+            this.test7Btn.Text = "7";
+            this.test7Btn.UseVisualStyleBackColor = false;
+            // 
+            // test6Btn
+            // 
+            this.test6Btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.test6Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.test6Btn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test6Btn.ForeColor = System.Drawing.Color.White;
+            this.test6Btn.Location = new System.Drawing.Point(71, 432);
+            this.test6Btn.Name = "test6Btn";
+            this.test6Btn.Size = new System.Drawing.Size(40, 24);
+            this.test6Btn.TabIndex = 38;
+            this.test6Btn.Text = "6";
+            this.test6Btn.UseVisualStyleBackColor = false;
+            // 
+            // test5Btn
+            // 
+            this.test5Btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.test5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.test5Btn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.test5Btn.ForeColor = System.Drawing.Color.White;
+            this.test5Btn.Location = new System.Drawing.Point(17, 432);
+            this.test5Btn.Name = "test5Btn";
+            this.test5Btn.Size = new System.Drawing.Size(40, 24);
+            this.test5Btn.TabIndex = 37;
+            this.test5Btn.Text = "5";
+            this.test5Btn.UseVisualStyleBackColor = false;
+            this.test5Btn.Click += new System.EventHandler(this.test5Btn_Click);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.Size = new System.Drawing.Size(153, 48);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // Form1
             // 
@@ -270,6 +419,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1103, 535);
+            this.Controls.Add(this.test8Btn);
+            this.Controls.Add(this.test7Btn);
+            this.Controls.Add(this.test6Btn);
+            this.Controls.Add(this.test5Btn);
+            this.Controls.Add(this.test4Btn);
+            this.Controls.Add(this.test3Btn);
+            this.Controls.Add(this.test2Btn);
+            this.Controls.Add(this.test1Btn);
+            this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.c2TextBox);
             this.Controls.Add(this.c1TextBox);
             this.Controls.Add(this.chart);
@@ -297,6 +455,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,6 +484,17 @@
         private System.Windows.Forms.TextBox a1TextBox;
         private System.Windows.Forms.TextBox signTextBox;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.Button test1Btn;
+        private System.Windows.Forms.Button test2Btn;
+        private System.Windows.Forms.Button test4Btn;
+        private System.Windows.Forms.Button test3Btn;
+        private System.Windows.Forms.Button test8Btn;
+        private System.Windows.Forms.Button test7Btn;
+        private System.Windows.Forms.Button test6Btn;
+        private System.Windows.Forms.Button test5Btn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
 
