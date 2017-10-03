@@ -50,18 +50,10 @@ namespace WindowsFormsApplication1
         void Form1_KeyUp(object sender, KeyEventArgs e)
         {
 
-            double addedValue = 25;
+            double addedValue = 5;
             double differenceX = currentXMax - currentXMin;
             double differenceY = currentYMax - currentYMin;
-            if ((differenceX > 50) && (differenceX > 50))
-            {
-                addedValue = 25;
-            }
-            else if ((differenceX > 25) && (differenceX > 25))
-            {
-                addedValue = 10;
-            }
-            else if ((differenceX > 10) && (differenceX > 10))
+            if ((differenceX > 10) && (differenceX > 10))
             {
                 addedValue = 5;
             }
@@ -906,10 +898,13 @@ namespace WindowsFormsApplication1
         
         void setScale()
         {
-            chart.ChartAreas[0].AxisX.Maximum = currentXMax;
-            chart.ChartAreas[0].AxisX.Minimum = currentXMin;
-            chart.ChartAreas[0].AxisY.Maximum = currentYMax;
-            chart.ChartAreas[0].AxisY.Minimum = currentYMin;
+            if (currentXMax > currentXMin && currentYMax > currentYMin)
+            {
+                chart.ChartAreas[0].AxisX.Maximum = currentXMax;
+                chart.ChartAreas[0].AxisX.Minimum = currentXMin;
+                chart.ChartAreas[0].AxisY.Maximum = currentYMax;
+                chart.ChartAreas[0].AxisY.Minimum = currentYMin;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -989,12 +984,24 @@ namespace WindowsFormsApplication1
 
         private void test7Btn_Click(object sender, EventArgs e)
         {
-
+            clear();
+            c1TextBox.Text = "-1";
+            c2TextBox.Text = "1";
+            add(new Constraint(0, 1, 0, true));
+            add(new Constraint(1, 1, 1, false));
+            add(new Constraint(1, -4, 1-2, true));
         }
 
         private void test8Btn_Click(object sender, EventArgs e)
         {
-
+            clear();
+            c1TextBox.Text = "1";
+            c2TextBox.Text = "-2";
+            add(new Constraint(1, 0, 0, true));
+            add(new Constraint(0, 1, 0, true));
+            add(new Constraint(5, 3, 30, true));
+            add(new Constraint(1, -1, 3, false));
+            add(new Constraint(-3, 5, 15, false));
         }
 
         private int rowIndex = 0;
