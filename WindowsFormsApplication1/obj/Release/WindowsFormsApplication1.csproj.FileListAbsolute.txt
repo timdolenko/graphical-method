@@ -1,0 +1,8 @@
+C:\Users\Sispo\Documents\University\MMDO\Lab 1\MMDO\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe.config
+C:\Users\Sispo\Documents\University\MMDO\Lab 1\MMDO\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe
+C:\Users\Sispo\Documents\University\MMDO\Lab 1\MMDO\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.pdb
+C:\Users\Sispo\Documents\University\MMDO\Lab 1\MMDO\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Form1.resources
+C:\Users\Sispo\Documents\University\MMDO\Lab 1\MMDO\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Sispo\Documents\University\MMDO\Lab 1\MMDO\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\Sispo\Documents\University\MMDO\Lab 1\MMDO\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
+C:\Users\Sispo\Documents\University\MMDO\Lab 1\MMDO\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
