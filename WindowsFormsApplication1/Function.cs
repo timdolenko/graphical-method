@@ -16,9 +16,22 @@ namespace WindowsFormsApplication1
         public Constraint[] constraints;
         
         public Function(double c1, double c2, Constraint[] constraints) {
-            this.c1 = c1;
-            this.c2 = c2;
-            this.constraints = constraints;
+            if (c1 == 0 && c2 == 0)
+            {
+                throw new Exception("Invalid function");
+            }
+            else
+            {
+                this.c1 = c1;
+                this.c2 = c2;
+                this.constraints = constraints;
+            }
+        }
+
+        public override string ToString()
+        {
+            string c2String = c2 > 0 ? "+ " + c2 : "- " + c2 * -1;
+            return $"F= {c1}x1 {c2String}x2";
         }
 
     }
